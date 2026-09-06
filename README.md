@@ -18,6 +18,7 @@ It also features a lot of other fixes and improvements:
 * Extra Webcam "widget"
 * Extra Gcode viewer "widget"
 * Extra Temperature "widget"
+* Extra Control "widget" using OctoPrint's native printer controls
 * [Compact Navbar temp](https://plugins.octoprint.org/plugins/navbartemp/) icons
 * Hide widgets
 * Hide main camera on Control tab
@@ -50,6 +51,19 @@ or manually using this URL:
 
 
 ## Configuration
+### Testing the Control widget branch
+
+Install `https://github.com/wesk1/OctoPrint-UICustomizer/archive/refs/heads/control-widget.zip`
+using Plugin Manager, then restart OctoPrint and reload the browser.
+In UI Customizer's Layout settings, enable **Control** and drag it into the
+right column below **State**, then save. Existing saved layouts keep their
+positions; new/default layouts include Control below State.
+
+The widget relocates OctoPrint's already-bound native jog, extrusion, general
+and custom controls. Hiding the widget in Layout returns them to the original
+Control tab. Main Tabs continues to show/hide the original Control tab
+independently. Webcam, Gcode and Temperature widgets keep their existing behavior.
+
 The configuration is split into 6 tabs - all have an preview option in the top right menu
 
 ### General
@@ -124,4 +138,3 @@ If you like my work feel free to support me using paypal: https://www.paypal.com
 ![](extras/camwidget.png)
 ### Floating webcam
 ![](extras/floating.png)
-

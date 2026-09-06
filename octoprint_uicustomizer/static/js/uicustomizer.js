@@ -80,7 +80,8 @@ $(function() {
             'div.UICmainTabs' : '<i class="fas fa-columns"></i> Main tabs',
             '#UICWebCamWidget' : '<i class="fas fa-camera"></i> Webcam',
             '#UICGcodeVWidget' : '<i class="fab icon-black fa-codepen"></i> Gcode',
-            '#UICTempWidget' : '<i class="fas fa-thermometer-half icon-black"></i> Temperature'
+            '#UICTempWidget' : '<i class="fas fa-thermometer-half icon-black"></i> Temperature',
+            '#UICControlWidget' : '<i class="fas fa-expand-arrows-alt icon-black"></i> Control'
         }
 
         self.customWidgets = {
@@ -131,6 +132,13 @@ $(function() {
                             </div>\
                         </div>',
                 'init' : 'CustomW_initTempGraph',
+            },
+            '#UICControlWidget' : {
+                'dom': '<div id="UICControlWidget" class="accordion-group">' +
+                    '<div class="accordion-heading"><a class="accordion-toggle" data-toggle="collapse" data-target="#UICControlWidgetContainer">' +
+                    '<i class="fas fa-expand-arrows-alt icon-black"></i> Control</a></div>' +
+                    '<div id="UICControlWidgetContainer" class="accordion-body in collapse"><div class="accordion-inner"></div></div></div>',
+                'init': 'CustomW_initControl'
             }
         }
 
@@ -945,6 +953,10 @@ $(function() {
 
         // ------------------------------------------------------------------------------------------------------------------------
         self.set_mainLayout = function(settingsData){
+            // Also restore controls when cancelling a preview that introduced
+            // the widget into an older layout which has no Control entry.
+            self.CustomW_initControl(false);
+            $('#UICControlWidget').addClass('UICHide');
             // Fix layout and width - using magic
             var TempCols = [...settingsData.rows()];
 
@@ -1500,6 +1512,28 @@ $(function() {
                 }
             }
         }
+
+        // Move the already-bound native panels, preserving their view model,
+        // permissions, plugin controls, event handlers and unique IDs. Never
+        // clone or rebind these nodes, and leave the webcam and tab shell alone.
+        self.controlWidgetPanels = [];
+        self.CustomW_initControl = function(enable){
+            if (enable && !self.controlWidgetPanels.length){
+                $('#control > .jog-panel, #control > #control-jog-custom').each(function(){
+                    var marker = document.createComment('UIC native control position');
+                    this.parentNode.insertBefore(marker, this);
+                    self.controlWidgetPanels.push({node: this, marker: marker});
+                });
+            }
+            var target = $('#UICControlWidgetContainer > .accordion-inner')[0];
+            self.controlWidgetPanels.forEach(function(panel){
+                if (enable && target){
+                    target.appendChild(panel.node);
+                }else if (panel.marker.parentNode){
+                    panel.marker.parentNode.insertBefore(panel.node, panel.marker.nextSibling);
+                }
+            });
+        };
 
         self.CustomW_initTempGraph = function(enable){
             self.logToConsole('CustomW_initTempGraph',enable);
@@ -3272,7 +3306,7 @@ $(function() {
                         self.logToConsole("new widgetid: " + widgetid);
                     }
                     // This is bad
-                    if ($(widgetid).length == 0){
+                    if ($(widgetid).length == 0 && widgetid != '#UICControlWidget'){
                         self.logToConsole("Skipping widgetid: " + widgetid + ", not found");
                         return;
                     }

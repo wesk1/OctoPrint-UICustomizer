@@ -1505,3 +1505,20 @@ body:has(.pgfullscreen) #navbar {
 }
 
 /* UICustomizer END */
+
+/* Native Control panels, scoped to the extra widget. */
+#UICControlWidget .accordion-inner { display: flow-root; }
+#UICControlWidget .jog-panel { float: left; margin-right: 10px; max-width: 100%; }
+#UICControlWidget h1 { text-align: left; }
+#UICControlWidget .jog-panel > div { text-align: center; }
+#UICControlWidget .jog-panel > div.distance { text-align: left; }
+#UICControlWidget .jog-panel .slider { margin-bottom: 10px; }
+#UICControlWidget .box { width: 30px; height: 30px; margin-right: 10px; margin-bottom: 10px; padding: 0; }
+#UICControlWidget .control-box { display: block; height: 30px; margin-bottom: 10px; }
+#UICControlWidget .btn-group { margin-bottom: 10px; }
+#UICControlWidget .btn-group.distance > .btn { width: 43px; padding: 3px 0; height: 30px; }
+#UICControlWidget .slider-handle { width: 14px; height: 14px; margin-left: -7px; margin-top: -3px; }
+#UICControlWidget .custom_section h1 { cursor: pointer; }
+#UICControlWidget .custom_section_horizontal > .custom_control { display: inline-block; }
+#UICControlWidget .custom_section_vertical > .custom_control { display: block; }
+#UICControlWidget .custom_control .slider { margin: 0 10px 2px; }

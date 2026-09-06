@@ -133,6 +133,7 @@ class UICustomizerPlugin(octoprint.plugin.StartupPlugin,
                     "#UICGcodeVWidget": True,
                     "#UICTempWidget" : True,
                     "#state_wrapper": True,
+                    "#UICControlWidget": True,
                     "#sidebar_plugin_action_command_notification_wrapper": True
                 }
             ],
