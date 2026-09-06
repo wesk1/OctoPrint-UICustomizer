@@ -51,9 +51,9 @@ or manually using this URL:
 
 
 ## Configuration
-### Testing the Control widget branch
+### Control widget
 
-Install `https://github.com/wesk1/OctoPrint-UICustomizer/archive/refs/heads/control-widget.zip`
+Install `https://github.com/wesk1/OctoPrint-UICustomizer/archive/refs/heads/main.zip`
 using Plugin Manager, then restart OctoPrint and reload the browser.
 In UI Customizer's Layout settings, enable **Control** and drag it into the
 right column below **State**, then save. Existing saved layouts keep their
