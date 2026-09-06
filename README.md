@@ -1,4 +1,26 @@
-# UI Customizer
+# UI Customizer — Control Widget Fork
+
+> **What is different in this fork?**
+>
+> This fork adds **Control as a movable UI Customizer widget** alongside
+> Webcam, Gcode, and Temperature. It uses OctoPrint's native Control view model
+> and controls, so jogging, extrusion, permissions, and custom controls retain
+> their normal behavior. The original Control tab remains independently
+> showable or hideable through UI Customizer's existing Main Tabs settings.
+>
+> Based on the original
+> [LazeMSS/OctoPrint-UICustomizer](https://github.com/LazeMSS/OctoPrint-UICustomizer).
+
+## Install this fork
+
+Paste this URL into OctoPrint's Plugin Manager:
+
+    https://github.com/wesk1/OctoPrint-UICustomizer/archive/refs/heads/main.zip
+
+After OctoPrint restarts, open **UI Customizer → Layout**, enable **Control**,
+and drag it to the desired column. New/default layouts place it in the right
+column below **State**.
+
 ![](extras/responsive.png)
 ![](extras/discoranged.png)
 A [OctoPrint](https://github.com/foosel/OctoPrint) plugin that allows you to customize the look and feel of the user interface.
@@ -42,22 +64,21 @@ Table of Contents
      * [Floating webcam](#floating-webcam)
 
 
-## Setup
+## Upstream setup information
 
 Install via the bundled [Plugin Manager](https://github.com/foosel/OctoPrint/wiki/Plugin:-Plugin-Manager)
 or manually using this URL:
 
-    https://github.com/LazeMSS/OctoPrint-UICustomizer/archive/main.zip
+    https://github.com/wesk1/OctoPrint-UICustomizer/archive/refs/heads/main.zip
 
 
 ## Configuration
 ### Control widget
 
-Install `https://github.com/wesk1/OctoPrint-UICustomizer/archive/refs/heads/main.zip`
-using Plugin Manager, then restart OctoPrint and reload the browser.
-In UI Customizer's Layout settings, enable **Control** and drag it into the
-right column below **State**, then save. Existing saved layouts keep their
-positions; new/default layouts include Control below State.
+After installation, restart OctoPrint and reload the browser. In UI
+Customizer's Layout settings, enable **Control**, drag it to the desired
+position, and save. Existing saved layouts keep their positions; new/default
+layouts include Control below State.
 
 The widget relocates OctoPrint's already-bound native jog, extrusion, general
 and custom controls. Hiding the widget in Layout returns them to the original
